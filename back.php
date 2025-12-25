@@ -89,14 +89,27 @@
             </tr>
           </tbody>
         </table>
-        <?php 
-        $do=$_GET['do'];
-        $file= "./back/$do.php";
+        <?php
+        // $do=$_GET['do'];
+        // $file= "./back/$do.php";
+        // if (!file_exists($file)) {
+        //   header("Location: index.php");
+        //   exit();
+        // }     
+        // include $file
+        $do = $_GET['do'] ?? 'title';
+        // $_GET['do'] 存在且不為NULL，回傳$_GET['do']，否則是'title'
+        $do = basename($do); 
+        // 這一行可以強制去掉所有路徑符號（如 ../），只留下檔名
+        $file = "./back/$do.php";
         if (!file_exists($file)) {
-          header("Location: index.php");
-          exit();
-        }     
-        include $file?>
+          // header("Location: ./back.php?do=title");
+          // exit();
+          include "./back/title.php";
+        }
+        include $file;
+
+        ?>
       </div>
       <div id="alt"
         style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
