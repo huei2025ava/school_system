@@ -152,3 +152,5 @@ function to($url)
 {
   header("location:" . $url);
 }
+
+$Title= new DB('title');

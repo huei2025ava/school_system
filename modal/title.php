@@ -1,12 +1,18 @@
-<form action="" method="post">
-  <table>
-    <tr>
-      <td>標題區圖片</td>
-      <td><input type="file" name="title_img" id=""></td>
-    </tr>
-    <tr>
-      <td>標題區替代文字</td>
-      <td><input type="text"></td>
-    </tr>
-  </table>
+<div class="cent">新增標題區圖片</div>
+<hr>
+<form action="../api/insert.php" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>標題區圖片</td>
+            <td><input type="file" name="img" id=""></td>
+        </tr>
+        <tr>
+            <td>標題區替代文字</td>
+            <td><input type="text" name="text"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="新增"><input type="reset" value="重製"></td>
+            <td></td>
+        </tr>
+    </table>
 </form>
