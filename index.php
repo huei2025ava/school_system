@@ -21,7 +21,7 @@
       <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
     </div>
   </div>
-  <iframe style="display:none;" name="back" id="back"></iframe>
+
   <div id="main">
     <a title="" href="index.php">
       <!-- &#39;&#39; 是 html 的單引號 ' -->
