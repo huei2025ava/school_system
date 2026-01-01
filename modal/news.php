@@ -1,10 +1,10 @@
-<div class="cent">新增動態文字廣告</div>
+<div class="cent">新增最新消息</div>
 <hr>
 <form action="../api/insert.php?table=<?=$_GET['table'];?>" method="post" enctype="multipart/form-data">
   <table>
     <tr>
-      <td>動態文字廣告</td>
-      <td><input type="text" name="text"></td>
+      <td>最新消息資料</td>
+      <td><textarea name="text" id=""></textarea></td>
     </tr>
     <tr>
       <td>

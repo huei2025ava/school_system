@@ -1,9 +1,9 @@
-<div class="cent">新增動畫圖片</div>
+<div class="cent">新增校園映像圖片</div>
 <hr>
-<form action="../api/insert.php?table=<?= $_GET['table'];?>" method="post" enctype="multipart/form-data">
+<form action="../api/insert.php?table=<?= $_GET['table']; ?>" method="post" enctype="multipart/form-data">
   <table>
     <tr>
-      <td>動畫圖片</td>
+      <td>校園映像圖片</td>
       <td><input type="file" name="img" id=""></td>
     </tr>
     <tr>
