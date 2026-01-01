@@ -1,6 +1,6 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
   <p class="t cent botli">網站標題管理</p>
-  <form method="post" action="../api/edit_title.php">
+  <form method="post" action="../api/edit.php?table=<?= $do ?>">
     <table width="100%">
       <tbody>
         <tr class="yel">
@@ -11,9 +11,9 @@
           <td></td>
         </tr>
         <?php
-                $rows = $Title->all();
-                foreach ($rows as $row):
-                ?>
+        $rows = $Title->all();
+        foreach ($rows as $row):
+        ?>
         <tr>
           <td width=" 45%">
             <img src="../upload/<?= $row['img']; ?>" style="width:300px;height:30px" alt="">
@@ -33,8 +33,8 @@
           </td>
         </tr>
         <?php
-                endforeach;
-                ?>
+        endforeach;
+        ?>
       </tbody>
     </table>
     <table style="margin-top:40px; width:70%;">
