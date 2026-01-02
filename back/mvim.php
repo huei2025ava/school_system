@@ -26,7 +26,7 @@
           </td>
           <td>
             <input type="button" value="更換動畫"
-              onclick="op('#cover','#cvr','modal/update_<?= $do ?>.php?table=<?= $do; ?>&id=<?= $row['id']; ?>')">
+              onclick="op('#cover','#cvr','modal/update.php?table=<?= $do; ?>&id=<?= $row['id']; ?>')">
           </td>
         </tr>
         <?php

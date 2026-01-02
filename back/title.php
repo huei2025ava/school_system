@@ -29,8 +29,7 @@
           </td>
           <td>
             <input type="button" value="更新圖片"
-              onclick="op('#cover','#cvr','modal/update_<?= $do ?>.php?table=<?= $do ?>&id=<?= $row['id']; ?>')"
-              value="新增網站標題圖片">
+              onclick="op('#cover','#cvr','modal/update.php?table=<?= $do ?>&id=<?= $row['id']; ?>')" value="新增網站標題圖片">
           </td>
         </tr>
         <?php
