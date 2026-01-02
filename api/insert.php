@@ -1,4 +1,4 @@
-<?php
+ <?php
 include_once "db.php";
 
 $table = $_GET['table'];
@@ -17,7 +17,9 @@ switch ($table) {
         break;
 
     default:
+    if ($table!='admin') {
         $_POST['sh'] = 1;
+    }
         break;
     // case 'ad':
     // case 'mvim':
