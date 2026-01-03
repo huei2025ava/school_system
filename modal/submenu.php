@@ -1,3 +1,6 @@
+<?php
+include_once "../api/db.php";
+?>
 <div class="cent">編輯次選單</div>
 <hr>
 <form action="../api/submenu.php?main_id=<?= $_GET['id']; ?>" method="post" enctype="multipart/form-data">
@@ -7,12 +10,19 @@
       <td>次選單連結網址</td>
       <td>刪除</td>
     </tr>
+    <?php
+    $subs = $Menu->all(['main_id' => $_GET['id']]);
+    foreach ($subs as $sub):
+    ?>
     <tr>
-      <td><input type=" text" name="text[]" id="">
+      <td><input type="text" name="text[<?= $sub['id'] ?>]" value="<?= $sub['text'] ?>">
       </td>
-      <td><input type="text" name="href[]"></td>
-      <td><input type="checkbox" name="del[]"></td>
+      <td><input type="text" name="href[<?= $sub['id'] ?>]" value="<?= $sub['href'] ?>"></td>
+      <td><input type="checkbox" name="del[]" value="<?= $sub['id'] ?>"></td>
     </tr>
+    <?php
+    endforeach;
+    ?>
   </table>
   <div class="cent">
     <input type="submit" value="修改確定">
