@@ -1,4 +1,10 @@
-﻿<?php include_once "./api/db.php"?>
+﻿<?php
+include_once "./api/db.php";
+if (!isset($_SESSION['admin'])) {
+  to("./login.php");
+  exit();
+}
+?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0068)?do=admin&redo=title -->
@@ -85,8 +91,9 @@
             <tr>
               <td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a
                   href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
-              <td><button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;?&#39;)"
-                  style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+              <td><button onclick="location.href='./api/logout.php'"
+                  style=" width:99%; margin-right:2px; height:50px;">管理登出</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -100,7 +107,7 @@
         // include $file
         $do = $_GET['do'] ?? 'title';
         // $_GET['do'] 存在且不為NULL，回傳$_GET['do']，否則是'title'
-        $do = basename($do); 
+        $do = basename($do);
         // 這一行可以強制去掉所有路徑符號（如 ../），只留下檔名
         $file = "./back/$do.php";
         if (!file_exists($file)) {
