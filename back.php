@@ -33,7 +33,7 @@ if (!isset($_SESSION['admin'])) {
     <?php
     $title = $Title->find(['sh' => 1]);
     ?>
-    <a title="<?= $title['text'] ?>" href="?">
+    <a title="<?= $title['text'] ?>" href="index.php">
       <div class="ti" style="background:url('../upload/<?= $title['img'] ?>'); background-size:cover;"></div>
       <!--標題-->
     </a>
@@ -144,7 +144,12 @@ if (!isset($_SESSION['admin'])) {
     <div style="clear:both;"></div>
     <div
       style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-      <span class="t" style="line-height:123px;"></span>
+      <span class="t" style="line-height:123px;">
+        <?php 
+        $bottom = $Bottom->find(1);
+        echo $bottom['bottom'];
+        ?>
+      </span>
     </div>
   </div>
 
