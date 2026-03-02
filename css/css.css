@@ -159,3 +159,8 @@ input:focus,button:focus
 	cursor:pointer;
 	text-decoration:none;
 }
+#altt pre {
+    white-space: pre-wrap;      /* 這是關鍵：保留空白但允許自動換行 */
+    word-wrap: break-word;      /* 避免長單字撐破框框 */
+    font-family: "微軟正黑體";   /* 讓字體好看一點 */
+}

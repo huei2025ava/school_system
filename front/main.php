@@ -16,6 +16,7 @@
              <div>沒有資料</div>
          </div>
      </div>
+
      <script>
      var lin = new Array();
 
@@ -57,7 +58,9 @@
                             foreach ($news as $n) {
                                 echo "<li>";
                                 echo mb_substr($n['text'], 0, 20);
-
+                                echo "<div class='all' style='display:none;'>";
+                                echo $n['text'];
+                                echo "</div>";
 
                                 echo "</li>";
                             }
