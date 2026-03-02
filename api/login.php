@@ -16,5 +16,5 @@ if ($chk) {
 ?>
 <script>
 alert('帳號或密碼錯誤');
-location.href = '../login.php';
+location.href = '../index.php?do=login';
 </script>

@@ -172,3 +172,6 @@ input:focus,button:focus
     word-wrap: break-word;      /* 避免長單字撐破框框 */
     font-family: "微軟正黑體";   /* 讓字體好看一點 */
 }
+.mainmu a{
+	display:block;
+}

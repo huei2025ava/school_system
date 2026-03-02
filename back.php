@@ -1,7 +1,7 @@
 ﻿<?php
 include_once "./api/db.php";
 if (!isset($_SESSION['admin'])) {
-  to("./login.php");
+  to("./index.php");
   exit();
 }
 ?>
