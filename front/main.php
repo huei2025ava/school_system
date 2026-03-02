@@ -13,7 +13,6 @@
      <!--正中央-->
      <div style="width:100%; padding:2px; height:290px;">
          <div id="mwww" loop="true" style="width:100%; height:100%;">
-             <div>沒有資料</div>
          </div>
      </div>
 
@@ -29,8 +28,8 @@
 
      var now = 0;
      if (lin.length > 1) {
+         ww(); // 立即執行第一次，這樣畫面一進來就有圖
          setInterval("ww()", 3000);
-         now = 1;
      }
 
      function ww() {
