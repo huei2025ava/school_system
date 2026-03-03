@@ -1,146 +1,189 @@
-﻿<?php
+<?php
 include_once "./api/db.php";
 if (!isset($_SESSION['admin'])) {
-  to("./index.php");
-  exit();
+    to("./index.php");
+    exit();
 }
 ?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0068)?do=admin&redo=title -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-TW">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <title>卓越科技大學校園資訊系統</title>
-    <link href="./css/css.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卓越科技大學校園資訊系統 - 後台管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="./js/jquery-3.4.1.js"></script>
     <script src="./js/js.js"></script>
+    <style>
+    body, html {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header-img {
+        height: 180px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+    }
+
+    #cover {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 2000;
+        background: rgba(0, 0, 0, 0.7);
+        top: 0;
+        left: 0;
+        display: none;
+    }
+
+    #coverr {
+        width: 80%;
+        max-width: 1000px;
+        height: 80%;
+        position: absolute;
+        background: #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 0.5rem;
+        padding: 2rem;
+        overflow: auto;
+    }
+
+    .full-height-card {
+        border-radius: 0;
+        border: none;
+        min-height: calc(100vh - 180px - 80px);
+    }
+    
+    .sidebar-bg {
+        background-color: #f8f9fa;
+    }
+
+    .admin-menu-item {
+        transition: all 0.2s;
+    }
+
+    .admin-menu-item:hover {
+        background-color: #e9ecef;
+        padding-left: 1.5rem !important;
+    }
+    </style>
 </head>
 
 <body>
-    <!-- 跳出視窗 -->
-    <div id="cover" style="display:none; ">
+    <!-- Modal Cover -->
+    <div id="cover">
         <div id="coverr">
-            <a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
-                onclick="cl(&#39;#cover&#39;)">X</a>
-            <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-3" onclick="cl('#cover')"
+                aria-label="Close"></button>
+            <div id="cvr"></div>
         </div>
     </div>
 
-    <div id="main">
-        <?php
-    $title = $Title->find(['sh' => 1]);
-    ?>
-        <a title="<?= $title['text'] ?>" href="index.php">
-            <div class="ti" style="background:url('../upload/<?= $title['img'] ?>'); background-size:cover;"></div>
-            <!--標題-->
+    <!-- Header Section -->
+    <?php $title = $Title->find(['sh' => 1]); ?>
+    <header class="container-fluid p-0">
+        <a title="<?= $title['text'] ?>" href="index.php" class="text-decoration-none">
+            <div class="header-img" style="background-image: url('upload/<?= $title['img'] ?>');">
+            </div>
         </a>
-        <div id="ms">
-            <div id="lf" style="float:left;">
-                <div id="menuput" class="dbor">
-                    <!--主選單放此-->
-                    <span class="t botli">後台管理選單</span>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=title">
-                        <div class="mainmu">
-                            網站標題管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=ad">
-                        <div class="mainmu">
-                            動態文字廣告管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=mvim">
-                        <div class="mainmu">
-                            動畫圖片管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=image">
-                        <div class="mainmu">
-                            校園映象資料管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=total">
-                        <div class="mainmu">
-                            進站總人數管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=bottom">
-                        <div class="mainmu">
-                            頁尾版權資料管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=news">
-                        <div class="mainmu">
-                            最新消息資料管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin">
-                        <div class="mainmu">
-                            管理者帳號管理 </div>
-                    </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=menu">
-                        <div class="mainmu">
-                            選單管理 </div>
-                    </a>
+    </header>
 
-
-                </div>
-                <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    <span class="t">進站總人數 :
+    <!-- Main Content Section -->
+    <main class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- Left Sidebar (25%) -->
+            <div class="col-lg-3 sidebar-bg border-end">
+                <div class="card full-height-card sidebar-bg">
+                    <div class="card-header bg-dark text-white text-center fw-bold rounded-0 py-3">
+                        後台管理選單
+                    </div>
+                    <div class="list-group list-group-flush">
                         <?php
-            $total = $Total->find(1);
-            echo $total['total'];
-            ?>
-                    </span>
+                        $menus = [
+                            'title' => '網站標題管理',
+                            'ad' => '動態文字廣告管理',
+                            'mvim' => '動畫圖片管理',
+                            'image' => '校園映象資料管理',
+                            'total' => '進站總人數管理',
+                            'bottom' => '頁尾版權資料管理',
+                            'news' => '最新消息資料管理',
+                            'admin' => '管理者帳號管理',
+                            'menu' => '選單管理',
+                        ];
+                        foreach ($menus as $do_key => $do_name) {
+                            $active = (($_GET['do'] ?? 'title') == $do_key) ? 'active shadow-sm' : '';
+                        ?>
+                        <a href="?do=<?= $do_key ?>" 
+                           class="list-group-item list-group-item-action admin-menu-item p-4 sidebar-bg border-bottom <?= $active ?>">
+                            <span class="fs-5 fw-medium"><?= $do_name ?></span>
+                        </a>
+                        <?php } ?>
+                    </div>
+                    <div class="mt-auto p-4 text-center border-top">
+                        <span class="fw-bold fs-5 text-muted">進站總人數 :
+                            <?php
+                            $total = $Total->find(1);
+                            echo $total['total'];
+                            ?>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="di"
-                style="height:540px; border:#999 1px solid; width:76.5%; margin:2px 0px 0px 0px; float:left; position:relative; left:20px;">
-                <!--正中央-->
-                <table width="100%">
-                    <tbody>
-                        <tr>
-                            <td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;"
-                                class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
-                            </td>
-                            <td><button onclick="location.href='./api/logout.php'"
-                                    style=" width:99%; margin-right:2px; height:50px;">管理登出</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <?php
-        // $do=$_GET['do'];
-        // $file= "./back/$do.php";
-        // if (!file_exists($file)) {
-        //   header("Location: index.php");
-        //   exit();
-        // }     
-        // include $file
-        $do = $_GET['do'] ?? 'title';
-        // $_GET['do'] 存在且不為NULL，回傳$_GET['do']，否則是'title'
-        $do = basename($do);
-        // 這一行可以強制去掉所有路徑符號（如 ../），只留下檔名
-        $file = "./back/$do.php";
-        if (!file_exists($file)) {
-          // header("Location: ./back.php?do=title");
-          // exit();
-          include "./back/title.php";
-        }
-        include $file;
 
-        ?>
+            <!-- Center Management Content (75%) -->
+            <div class="col-lg-9">
+                <div class="card full-height-card">
+                    <div class="card-header bg-white border-bottom p-4">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h2 class="mb-0 fw-bold text-primary">後台管理區</h2>
+                            </div>
+                            <div class="col-auto">
+                                <button onclick="location.href='./api/logout.php'" class="btn btn-outline-danger px-4 py-2 fw-bold">
+                                    管理登出
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <?php
+                        $do = $_GET['do'] ?? 'title';
+                        $do = basename($do);
+                        $file = "./back/$do.php";
+                        if (!file_exists($file)) {
+                            $file = "./back/title.php";
+                        }
+                        include $file;
+                        ?>
+                    </div>
+                </div>
             </div>
-
         </div>
-        <div style="clear:both;"></div>
-        <div
-            style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-            <span class="t" style="line-height:123px;">
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-warning py-4 border-top">
+        <div class="container-fluid text-center">
+            <span class="fw-bold fs-5">
                 <?php
-        $bottom = $Bottom->find(1);
-        echo $bottom['bottom'];
-        ?>
+                $bottom = $Bottom->find(1);
+                echo $bottom['bottom'];
+                ?>
             </span>
         </div>
-    </div>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
