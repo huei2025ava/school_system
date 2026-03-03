@@ -32,14 +32,16 @@
   - **`image.php` (映象管理)**：分頁功能 Bootstrap 化。
   - **`total.php` (人數管理)**：中央卡片式表單設計。
   - **`bottom.php` (頁尾管理)**：中央卡片式表單設計。
-
+  - `news.php`：最新消息管理（含分頁）。
+  - `admin.php`：管理者帳號管理。
+  - `menu.php`：選單管理（含次選單編輯功能）。
+- **彈出視窗內容 (`modal/*.php`)**：
+  - **`ad.php`**
+  - **`admin.php`**
+  - **`image.php`**
 ## 3. 待完成任務 (Next Steps)
-- [ ] **後台管理剩餘頁面**：
-  - `back/news.php`：最新消息管理（含分頁）。
-  - `back/admin.php`：管理者帳號管理。
-  - `back/menu.php`：選單管理（含次選單編輯功能）。
 - [ ] **彈出視窗內容 (`modal/*.php`)**：
-  - 所有新增與修改的彈出視窗內容需改為 Bootstrap 5 表單樣式。
+  - 剩餘新增與修改的彈出視窗內容需改為 Bootstrap 5 表單樣式。
 - [ ] **API 連結檢查**：
   - 確保所有 `op()` 函式呼叫的內容在 Bootstrap 佈局下正常顯示。
 
