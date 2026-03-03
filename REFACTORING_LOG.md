@@ -41,7 +41,13 @@
   - **`image.php`**
 ## 3. 待完成任務 (Next Steps)
 - [ ] **彈出視窗內容 (`modal/*.php`)**：
-  - 剩餘新增與修改的彈出視窗內容需改為 Bootstrap 5 表單樣式。
+  新增與修改的彈出視窗內容需改為 Bootstrap 5 表單樣式。
+  - **`menu.php`**
+  - **`mvim.php`**
+  - **`news.php`**
+  - **`submenu.php`**
+  - **`title.php`**
+  - **`update.php`**
 - [ ] **API 連結檢查**：
   - 確保所有 `op()` 函式呼叫的內容在 Bootstrap 佈局下正常顯示。
 
