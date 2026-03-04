@@ -13,7 +13,8 @@ include_once "./api/db.php"
     <script src="./js/jquery-3.4.1.js"></script>
     <script src="./js/js.js"></script>
     <style>
-    body, html {
+    body,
+    html {
         overflow-x: hidden;
         margin: 0;
         padding: 0;
@@ -82,9 +83,10 @@ include_once "./api/db.php"
     .full-height-card {
         border-radius: 0;
         border: none;
-        min-height: calc(100vh - 180px - 80px); /* 減去 header 與 footer 高度 */
+        min-height: calc(100vh - 180px - 80px);
+        /* 減去 header 與 footer 高度 */
     }
-    
+
     .sidebar-bg {
         background-color: #f8f9fa;
     }
@@ -135,7 +137,8 @@ include_once "./api/db.php"
                                     $subs = $Menu->all(['main_id' => $main['id']]);
                                     foreach ($subs as $sub):
                                     ?>
-                                <a href="<?= $sub['href'] ?>" class="list-group-item list-group-item-action bg-white py-3">
+                                <a href="<?= $sub['href'] ?>"
+                                    class="list-group-item list-group-item-action bg-white py-3">
                                     <?= $sub['text'] ?>
                                 </a>
                                 <?php endforeach; ?>
@@ -178,7 +181,8 @@ include_once "./api/db.php"
                     <div class="p-4">
                         <div class="d-grid gap-2 mb-4">
                             <?php if (isset($_SESSION['admin'])): ?>
-                            <button class="btn btn-outline-dark shadow-sm fw-bold py-3" onclick="lo('back.php')">返回管理</button>
+                            <button class="btn btn-outline-dark shadow-sm fw-bold py-3"
+                                onclick="lo('back.php')">返回管理</button>
                             <?php else: ?>
                             <button class="btn btn-dark shadow-sm fw-bold py-3" onclick="lo('?do=login')">管理登入</button>
                             <?php endif; ?>
@@ -237,9 +241,9 @@ include_once "./api/db.php"
     </main>
 
     <!-- Footer Section - Full Width -->
-    <footer class="bg-warning py-4 border-top">
+    <footer class="bg-success py-4 border-top">
         <div class="container-fluid text-center">
-            <span class="fw-bold fs-5">
+            <span class="fw-bold fs-5 text-light">
                 <?php
                 $bottom = $Bottom->find(1);
                 echo $bottom['bottom'];
